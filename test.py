@@ -29,7 +29,7 @@ def ssh_scp_transfer():
     port = 22  # 默认SSH端口
     username = 'luojing'
     password = ''  # 建议使用密钥认证更安全
-    private_key_path = 'C:\\Users\\luojing\\.ssh\\id_rsa' # 可选，如果使用密钥认证
+    private_key_path = 'C:/Users/luojing/.ssh/id_rsa' # 可选，如果使用密钥认证
 
     # 本地和远程路径
     local_path = './config.json'

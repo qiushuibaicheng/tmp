@@ -1,12 +1,13 @@
 import json
 import paramiko
 import os
+from dotenv import load_dotenv
 
 # 服务器连接信息
 hostname = '192.168.142.130'
 port = 22  # 默认SSH端口
 username = 'luojing'
-password = ''  # 建议使用密钥认证更安全
+password = 'luojing110'  # 建议使用密钥认证更安全
 private_key_path = 'C:\\Users\\luojing\\.ssh\\id_rsa'  # 可选，如果使用密钥认证
 
 # 本地和远程路径
@@ -20,7 +21,16 @@ def main():
         config: dict = json.loads(file_read.read())
 
     print(f"Hello from cmc! {config["test"]}")
-    input("按Enter键退出...")
+    # input("按Enter键退出...")
+
+
+def get_env():
+    load_dotenv()  # 加载 .env 文件
+    value = os.getenv("RAG_PROJECT_BASE")
+    file = "config.json"
+    print(os.path.exists(os.path.join(value, file)))
+    print(os.path.exists('C:/Users/luojing/.ssh/id_rsa'))
+    print(value)
 
 
 def ssh_scp_transfer():
@@ -90,7 +100,9 @@ def ssh_scp_transfer():
 
     except Exception as e:
         print(f"传输过程中出现错误: {e}")
+    input("按Enter键退出...")
 
 
 if __name__ == "__main__":
-    ssh_scp_transfer()
+    # ssh_scp_transfer()
+    get_env()
